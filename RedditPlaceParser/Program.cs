@@ -13,9 +13,9 @@ namespace Steganography
         static void Main(string[] args)
         {
             //LoadCanva();
-            LazyLoad();
+            LazyLoad("HeatMap.csv");
             //SaveCanva();
-            SavePicture();
+            HeatMap();
         }
         
         public static void LoadCanva()
@@ -49,9 +49,9 @@ namespace Steganography
             }
         }
         
-        public static void LazyLoad()
+        public static void LazyLoad(string filename)
         {
-            using (StreamReader sr = new StreamReader(path + "save.csv"))
+            using (StreamReader sr = new StreamReader(path + filename))
             {
                 string[] load = sr.ReadToEnd().Split("\n");
                 for (int y = 0; y < load.Length - 1; y++)
@@ -65,7 +65,7 @@ namespace Steganography
             }
         }
 
-        public static void SavePicture()
+        public static void HeatMap()
         {
             Bitmap bitmap = new Bitmap(2000, 2000);
 
@@ -73,19 +73,19 @@ namespace Steganography
             {
                 for (var x = 0; x < bitmap.Width; x++)
                 {
-                    if (canva[y, x] < 10)
+                    if (canva[y, x] < 100)
                     {
                         bitmap.SetPixel(x, y, Color.Black);
                     }
-                    if (canva[y, x] < 50)
+                    else if (canva[y, x] < 200)
                     {
                         bitmap.SetPixel(x, y, Color.Yellow);
                     }
-                    else if (canva[y, x] < 100)
+                    else if (canva[y, x] < 300)
                     {
                         bitmap.SetPixel(x, y, Color.Orange);
                     }
-                    else if (canva[y, x] < 200)
+                    else if (canva[y, x] < 500)
                     {
                         bitmap.SetPixel(x, y, Color.Red);
                     }
