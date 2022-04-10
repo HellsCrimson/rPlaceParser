@@ -6,4 +6,5 @@ obj
 .idea
 *.userprefs 
 
-*.csv
+2022_place_canvas_history.csv
+*.bmp
