@@ -6,9 +6,7 @@ obj
 .idea
 *.userprefs 
 
-2022_place_canvas_history.csv
-ordered.csv
-re_saved.csv
+*.csv
 *.bmp
 *.png
 *.gif
